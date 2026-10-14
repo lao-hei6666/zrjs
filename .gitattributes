@@ -1,0 +1,2 @@
+# 统一使用 LF 行尾，避免 Windows / macOS 协作时行尾混乱
+* text=auto eol=lf

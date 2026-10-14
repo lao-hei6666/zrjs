@@ -1,0 +1,14 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": {
+        "list": [
+            { "id": 1001, "name": "示例KTV(示例店)", "type_code": "KTV" },
+            { "id": 1002, "name": "示例台球俱乐部", "type_code": "TQG" },
+            { "id": 1003, "name": "示例精酿啤酒馆", "type_code": "JNJB" }
+        ],
+        "page": 1,
+        "limit": 100,
+        "total": 3
+    }
+}

@@ -1,0 +1,57 @@
+{
+  "delayMs": 2000,
+  "paceMode": "strict",
+  "minPhotoCount": 5,
+  "closingTimeAfter": "23:00",
+  "pageSize": 20,
+  "maxPagesPerKeyword": 10,
+  "poiCooldownMs": 2000,
+  "output": {
+    "dir": "D:/Code/csjb",
+    "filePrefix": "场所采集",
+    "sheetName": "场所列表"
+  },
+  "amap": {
+    "entryUrl": "https://ditu.amap.com/ssr/search?query_type=TQUERY&query={kw}&city=110000&_src=around&geoobj=116.271842%7C39.854659%7C116.345800%7C39.885683&zoom=14.99",
+    "city": "110000",
+    "cityName": "北京市",
+    "userDataDir": ".browser-profile",
+    "browserChannel": "auto",
+    "launchMode": "cdp",
+    "headless": false,
+    "remoteDebug": false,
+    "reuseExistingBrowser": false,
+    "closeProfileBeforeLaunch": true,
+    "loginFlagSelectors": [
+      ".amap-login-user-name",
+      ".user-name",
+      "#login-username"
+    ]
+  },
+  "dianping": {
+    "entryUrl": "https://www.dianping.com/beijing",
+    "keywordSearchUrl": "https://www.dianping.com/search/keyword/2/0_{kw}",
+    "cityId": 2,
+    "userDataDir": ".browser-profile",
+    "loginFlagSelectors": [
+      ".user-info-name",
+      ".mine-info .name",
+      "#my-name"
+    ],
+    "addressSimilarityThreshold": 0.45
+  },
+  "facilityKeywords": [
+    "免费停车", "方便停车", "停车场", "停车", "免费wifi", "免费wi-fi", "wifi", "无线网",
+    "可刷卡", "刷卡", "充电", "充电桩", "行李寄存", "无障碍", "电梯", "包间", "自助",
+    "24小时", "免费茶水", "免费茶点", "免费小吃", "可停车", "代客泊车", "休息区", "储物柜"
+  ],
+  "source": "amap",
+  "recommendRatingAbove": 4.1,
+  "defaults": {
+    "wechat": "",
+    "coverImage": "",
+    "description": "",
+    "sortWeight": 0,
+    "rating": "4.0"
+  }
+}

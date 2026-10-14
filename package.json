@@ -1,0 +1,28 @@
+{
+  "name": "csjb-amap-collector",
+  "version": "1.0.0",
+  "private": true,
+  "description": "北京休闲娱乐场所批量采集工具（高德地图采集 + 大众点评核验 + xlsx 导出）",
+  "type": "commonjs",
+  "main": "tools/collect.js",
+  "scripts": {
+    "collect": "node tools/collect.js",
+    "browser": "node tools/start-browser.js",
+    "login": "node tools/login.js",
+    "check-login": "node tools/check-login.js",
+    "close-browser": "node tools/close-browser.js",
+    "web": "node web/server.js",
+    "test": "node test/businessHours.test.js && node test/classifier.test.js && node test/export.test.js",
+    "test:hours": "node test/businessHours.test.js",
+    "test:classifier": "node test/classifier.test.js",
+    "test:export": "node test/export.test.js"
+  },
+  "dependencies": {
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "playwright": "^1.49.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}

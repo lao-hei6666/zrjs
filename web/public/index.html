@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>场所采集控制台 · 高德地图 + 大众点评</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="bg-orbs" aria-hidden="true">
+    <span class="orb orb--1"></span>
+    <span class="orb orb--2"></span>
+    <span class="orb orb--3"></span>
+  </div>
+
+  <header class="topbar">
+    <div class="brand">
+      <div class="logo" onerror="this.style.display='none'">高</div>
+      <div class="brand__text">
+        <h1>北京休闲娱乐场所批量采集</h1>
+        <p>高德地图采集 · 大众点评核验 · 清洗去重 · 一键导出 xlsx</p>
+      </div>
+    </div>
+    <div class="status" id="statusBadge" data-state="idle">
+      <span class="status__dot"></span>
+      <span id="statusText">空闲</span>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="card card--control" aria-labelledby="controlTitle">
+      <div class="card__head">
+        <h2 id="controlTitle">采集控制</h2>
+        <span class="tag">输入上限 → 开始采集</span>
+      </div>
+
+      <label class="field" for="limitInput">
+        <span class="field__label">采集数量上限</span>
+        <div class="field__control">
+          <input id="limitInput" type="number" min="1" step="1" value="5" inputmode="numeric" />
+          <span class="field__unit">个</span>
+        </div>
+        <span class="field__hint">通过全部规则（去重 / 分类 / 照片数 / 营业时间 / 大众点评核验）的场所数量上限</span>
+      </label>
+
+      <div class="actions">
+        <button id="startBtn" class="btn btn--primary">
+          <span class="btn__glow"></span>
+          开始采集
+        </button>
+        <button id="stopBtn" class="btn btn--ghost" disabled>停止</button>
+      </div>
+
+      <p class="estimate" id="estimate">预计耗时约 80 秒（每条约 16 秒，含登录等待）</p>
+
+      <ul class="chips">
+        <li>操作间隔 2 秒</li>
+        <li>照片数 &gt; 5</li>
+        <li>结束营业 &gt; 23:00</li>
+        <li>不与 cs.txt 重名</li>
+        <li>分类属于 fl.txt</li>
+        <li>大众点评同店核验</li>
+      </ul>
+
+      <p class="note">点击开始后会打开浏览器窗口，请在窗口中完成 <b>高德地图</b> 与 <b>大众点评</b> 登录，脚本检测到登录后自动继续。</p>
+    </section>
+
+    <section class="card card--progress" aria-labelledby="progressTitle">
+      <div class="card__head">
+        <h2 id="progressTitle">采集进度</h2>
+        <span class="tag" id="stageTag">等待开始</span>
+      </div>
+
+      <div class="progress">
+        <div class="progress__track">
+          <div class="progress__bar" id="progressBar"></div>
+        </div>
+        <span class="progress__value" id="progressText">0%</span>
+      </div>
+
+      <div class="metrics">
+        <div class="metric"><b id="statScanned">0</b><span>已扫描</span></div>
+        <div class="metric metric--ok"><b id="statPassed">0</b><span>已通过</span></div>
+        <div class="metric metric--warn"><b id="statRejected">0</b><span>已过滤</span></div>
+        <div class="metric metric--info"><b id="statVerified">0</b><span>已核验</span></div>
+      </div>
+
+      <div class="result">
+        <div class="result__row">
+          <span class="result__label">结果文件</span>
+          <button id="openFolder" class="btn btn--tiny">打开目录</button>
+        </div>
+        <code id="resultPath">尚未生成</code>
+        <code id="reportPath"></code>
+      </div>
+    </section>
+
+    <section class="card card--log" aria-labelledby="logTitle">
+      <div class="card__head">
+        <h2 id="logTitle">实时日志</h2>
+        <div class="log-tools">
+          <label class="switch"><input type="checkbox" id="autoScroll" checked /><span>自动滚动</span></label>
+          <button id="clearLog" class="btn btn--tiny">清空</button>
+        </div>
+      </div>
+      <div class="terminal" id="logView" role="log" aria-live="polite"></div>
+    </section>
+
+    <footer class="tips">
+      <div><b>高德</b>：封面右下角「照片N」为可信照片数（未登录时相册只显示 3 张，不作为依据）。</div>
+      <div><b>大众点评</b>：显示「休息中」也算正常营业；仅歇业 / 关闭 / 查不到才判定不通过。</div>
+      <div><b>输出</b>：<code>D:\Code\csjb\场所采集_时间戳.xlsx</code>（21 列，最后一列为照片数量）。</div>
+    </footer>
+  </main>
+
+  <div class="toast" id="toast" role="status"></div>
+  <script src="./app.js"></script>
+</body>
+</html>

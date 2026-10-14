@@ -1,0 +1,18 @@
+{
+    "code": 0,
+    "message": "success",
+    "data": [
+        { "id": 31, "code": "QIPAI", "name": "棋牌", "is_show": 1 },
+        { "id": 30, "code": "MAJIANG", "name": "麻将馆", "is_show": 1 },
+        { "id": 29, "code": "XXAMZY", "name": "休闲按摩足浴", "is_show": 1 },
+        { "id": 26, "code": "TQG", "name": "台球馆", "is_show": 1 },
+        { "id": 25, "code": "ZJYX", "name": "主机游戏", "is_show": 1 },
+        { "id": 24, "code": "SRYY", "name": "私人影院", "is_show": 1 },
+        { "id": 23, "code": "JBS", "name": "剧本杀", "is_show": 1 },
+        { "id": 22, "code": "LiveHouse", "name": "Live House", "is_show": 1 },
+        { "id": 21, "code": "YD", "name": "夜店", "is_show": 1 },
+        { "id": 20, "code": "JNJB", "name": "精酿酒吧", "is_show": 1 },
+        { "id": 19, "code": "jiuba", "name": "特调酒吧", "is_show": 1 },
+        { "id": 18, "code": "KTV", "name": "KTV", "is_show": 1 }
+    ]
+}
